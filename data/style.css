@@ -1,0 +1,117 @@
+﻿html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+    -webkit-tap-highlight-color: transparent
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    background: -webkit-linear-gradient(-45deg, #0e3453 0, #207cca 100%);
+    background-attachment: fixed;
+    font-size: 16px;
+    text-decoration: none
+}
+
+#site {
+    display: block
+}
+
+#box {
+    position: relative;
+    width: 100%;
+    min-width: 320px;
+    max-width: 640px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.19);
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    overflow: hidden;
+    background-color: white;
+    transition: height .5s
+}
+
+#main {
+    text-align: center;
+    color: #64787d
+}
+
+#clock {
+    display: inline-block;
+    font-size: 3em;
+    font-weight: 100;
+    color: #64787d
+}
+
+.clockText {
+    font-size: 3em;
+    text-align: center;
+}
+
+.textField {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.flex-h {
+    display: flex;
+    font-weight: bold;
+    background-color: rgba(19, 72, 115, 1);
+    color: #fff;
+    line-height: 35px;
+    padding: 0 30px;
+    min-height: 35px
+}
+
+.flex {
+    display: flex;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid #b4bec3;
+    padding: 0 10px;
+    margin: 0 15px;
+    height: 60px
+}
+
+.flex-l {
+    border-bottom: 0
+}
+
+.bfield {
+    flex: 1 1 180px;
+    text-align: center;
+    font-size: 14px;
+    margin: auto 0;
+    line-height: 22px
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    height: 30px;
+    color: #fff;
+    background-color: #b4bec3;
+    border-radius: 15px;
+    font-weight: bold;
+    min-width: 200px;
+    margin: 20px 10px 20px 0;
+    cursor: pointer
+}
+
+button:disabled {
+    background-color: #fff;
+    border: 2px solid #b4bec3;
+    color: #b4bec3;
+    cursor: initial
+}
+
+button:active,
+button:focus {
+    outline: 0
+}
