@@ -54,15 +54,15 @@ void onWsEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventTyp
             }
             else if (cmd.startsWith("add"))
             {
-                int seconds = cmd.substring(cmd.indexOf(' ')).toInt();
+                int minutes = cmd.substring(cmd.indexOf(' ')).toInt();
                 // Serial.printf("add - %d\n", seconds);
-                setClockState(ADDING, seconds);
+                setClockState(ADDING, minutes);
             }
             else if (cmd.startsWith("wait"))
             {
-                int seconds = cmd.substring(cmd.indexOf(' ')).toInt();
+                int minutes = cmd.substring(cmd.indexOf(' ')).toInt();
                 // Serial.printf("wait - %d\n", seconds);
-                setClockState(WAITING, seconds);
+                setClockState(WAITING, minutes);
             }
         }
     }

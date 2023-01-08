@@ -36,11 +36,11 @@
     async function stopClock() {
         ws.send("stop");
     }
-    async function addSeconds(sec) {
-        ws.send(`add ${sec}`);
+    async function addMinutes(min) {
+        ws.send(`add ${min}`);
     }
-    async function waitSeconds(sec) {
-        ws.send(`wait ${sec}`);
+    async function waitMinutes(min) {
+        ws.send(`wait ${min}`);
     }
 </script>
 <html lang="en">
@@ -99,22 +99,17 @@
                 </div>
                 <div class="flex">
                     <div class="bfield">
-                        <button onclick="addSeconds(1)">Add Second</button>
+                        <button onclick="addMinutes(1)">Add Minute</button>
                     </div>
                 </div>
                 <div class="flex">
                     <div class="bfield">
-                        <button onclick="addSeconds(60)">Add Minute</button>
+                        <button onclick="addMinutes(60)">Add Hour</button>
                     </div>
                 </div>
                 <div class="flex">
                     <div class="bfield">
-                        <button onclick="addSeconds(3600)">Add Hour</button>
-                    </div>
-                </div>
-                <div class="flex flex-l">
-                    <div class="bfield">
-                        <button onclick="addSeconds(39600)">Add 11 Hours</button>
+                        <button onclick="addMinutes(660)">Add 11 Hours</button>
                     </div>
                 </div>
 
@@ -123,22 +118,17 @@
                 </div>
                 <div class="flex">
                     <div class="bfield">
-                        <button onclick="waitSeconds(1)">Wait Second</button>
+                        <button onclick="waitMinutes(1)">Wait Minute</button>
                     </div>
                 </div>
                 <div class="flex">
                     <div class="bfield">
-                        <button onclick="waitSeconds(60)">Wait Minute</button>
+                        <button onclick="waitMinutes(60)">Wait Hour</button>
                     </div>
                 </div>
                 <div class="flex">
                     <div class="bfield">
-                        <button onclick="waitSeconds(3600)">Wait Hour</button>
-                    </div>
-                </div>
-                <div class="flex flex-l">
-                    <div class="bfield">
-                        <button onclick="waitSeconds(39600)">Wait 11 Hours</button>
+                        <button onclick="waitMinutes(660)">Wait 11 Hours</button>
                     </div>
                 </div>
 

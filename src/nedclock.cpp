@@ -9,7 +9,7 @@ const char *ntpServer1 = "pool.ntp.org";
 const char *ntpServer2 = "time.nist.gov";
 const char *time_zone = "CET-1CEST,M3.5.0,M10.5.0/3"; // TimeZone rule for Europe/Amsterdam including daylight adjustment
 clockState_t currentState;
-int currentSeconds;
+int currentMinutes;
 
 // Callback function (get's called when time adjusts via NTP)
 void timeavailable(struct timeval *t)
@@ -50,11 +50,11 @@ void initClock()
 }
 
 bool positive;
-void tickSecond(int ticks)
+void tickClock(int ticks)
 {
     for (int i = ticks; i > 0; i--)
     {
-        // Serial.println("Second tick");
+        //Serial.println("Clock tick");
 
         if (positive)
         {
@@ -81,7 +81,8 @@ void tickSecond(int ticks)
 }
 
 int lastSecond;
-void tickClock()
+int lastMinute;
+void tickSecond()
 {
     struct tm timeinfo;
     if (getLocalTime(&timeinfo))
@@ -95,21 +96,28 @@ void tickClock()
             switch (currentState)
             {
             case RUNNING:
-                tickSecond(1);
+                if (timeinfo.tm_min != lastMinute)
+                {
+                    lastMinute = timeinfo.tm_min;
+                    tickClock(1);
+                }
                 break;
             case STOPPED:
                 break;
             case ADDING:
-                tickSecond(currentSeconds);
+                tickClock(currentMinutes);
                 currentState = RUNNING;
                 break;
             case WAITING:
-                currentSeconds--;
-                if (currentSeconds == 0)
+                if (timeinfo.tm_min != lastMinute)
                 {
-                    currentState = RUNNING;
+                    lastMinute = timeinfo.tm_min;
+                    currentMinutes--;
+                    if (currentMinutes == 0)
+                    {
+                        currentState = RUNNING;
+                    }
                 }
-
                 break;
             default:
                 break;
@@ -135,8 +143,8 @@ void setClockState(clockState_t state)
     currentState = state;
 }
 
-void setClockState(clockState_t state, int seconds)
+void setClockState(clockState_t state, int minutes)
 {
     currentState = state;
-    currentSeconds = seconds;
+    currentMinutes = minutes;
 }

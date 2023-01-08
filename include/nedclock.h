@@ -11,7 +11,7 @@ enum clockState_t
 };
 
 void initClock();
-void tickClock();
+void tickSecond();
 String getClockState();
 void setClockState(clockState_t state);
 void setClockState(clockState_t state, int seconds);

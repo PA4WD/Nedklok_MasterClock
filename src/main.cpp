@@ -23,7 +23,7 @@ void setup()
 
 void loop()
 {
-  tickClock();
+  tickSecond();
   checkWifi();
   cleanWebSockets();
 }
