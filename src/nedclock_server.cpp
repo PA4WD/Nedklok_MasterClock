@@ -68,16 +68,18 @@ void onWsEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventTyp
     }
 }
 
-void updateClientTime(tm *time)
+void updateClientTime(String datetime)
 {
     if (ws.getClients().isEmpty() == false)
     {
         //Serial.println(time, "%A, %B %d %Y %H:%M:%S zone %Z %z ");
-        char buf[32];
-        strftime(buf, sizeof(buf), "%FT%T%z", time); //YYYY-MM-DDThh:mm:ssTZD (eg 1997-07-16T19:20:30+01:00)
+        // char buf[32];
+        // strftime(buf, sizeof(buf), "%FT%T%z", time); //YYYY-MM-DDThh:mm:ssTZD (eg 1997-07-16T19:20:30+01:00)
         StaticJsonDocument<128> doc;
-        doc["time"] = buf;
+        //doc["time"] = buf;
+        doc["time"] = datetime;
         doc["state"] = getClockState();
+        doc["temp"] = getTemperature();
         //serializeJsonPretty(doc, Serial);
         String output;
         serializeJson(doc, output);

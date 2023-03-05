@@ -23,6 +23,7 @@
             document.querySelector("#clockTime").innerHTML = date.toLocaleTimeString();
             document.querySelector("#clockDate").innerHTML = date.toDateString();            
             document.querySelector("#clockState").innerHTML = obj.state;
+            document.querySelector("#clockTemp").innerHTML = obj.temp + " C";
         };
     }
 
@@ -78,6 +79,13 @@
                 </div>
                 <div class="textField">
                     <div class="clockText" id="clockState">Unknown</div>
+                </div>
+
+                <div class="flex-h">
+                    <div class="s1">CLOCK TEMPERATURE</div>
+                </div>
+                <div class="textField">
+                    <div class="clockText" id="clockTemp">Unknown</div>
                 </div>
 
                 <div class="flex-h">
